@@ -3,13 +3,6 @@ import ru from './js/ru.js';
 import en from './js/en.js';
 
 
-let keyboard = []
-
-document.onkeydown = function(e){
-  keyboard.push(window.event.code)
-  console.log(keyboard)
-}
-
 const body = document.querySelector('body')
 function createStructure(){
   const wrapper = document.createElement('div')
@@ -59,12 +52,32 @@ function changeLang(){
     key[i].dataset.code = en[i].code
   }
 }
-window.addEventListener('DOMContentLoaded',createStructure )
-document.addEventListener('keydown', write);
+window.addEventListener('DOMContentLoaded',()=>{
+createStructure()
+write()
 
 
-function write(e){
+})
+
+
+
+
+
+function write(event){
+  const keys = document.querySelectorAll('.keys')
+keys.forEach(key=>key.addEventListener('click', write));
+console.log(event.target)
+
 const textarea = document.querySelector('textarea')
-console.log(textarea)
- textarea.value += e.key
+event.target.classList.add('active')
+console.log('test')
+
+ textarea.value += event.target.innerHTML
+}
+
+
+const capslock = document.querySelector('[data-code="CapsLock"]');
+//capslock.addEventListener('click',clickCapslock)
+function clickCapslock(e){
+
 }
