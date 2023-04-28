@@ -105,6 +105,7 @@ padding: 10px;
 box-shadow: 0 0 10px rgb(0, 0, 0);
 margin-bottom: 40px;
 border-radius: 5px;
+overflow-y: auto;
 }
 
 #keyboard{
@@ -116,10 +117,16 @@ border-radius: 5px;
   background-color: #e7e7e7;
   box-shadow: 0 0 10px rgb(0, 0, 0);
   background: linear-gradient(99.87deg, #9699b0 0.08%, #8487a0 100%);
-box-shadow: 0px 7px 14px rgba(0, 0, 0, 0.2);
+  box-shadow: inset rgba(0,0,0,.75) -1px -1px 2px, inset rgba(161, 160, 160, 0.9) 1px 1px 2px, rgba(0,0,0,.8) 1px 1px 2px -1px;
 border-radius: 10px;
   font-size: 1.2rem; 
   gap:4px;
+  -webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .row {
@@ -130,47 +137,77 @@ border-radius: 10px;
   height: 60px;
   background: #212B36;
   border: 1px solid #48515B;
-  box-shadow: 0px 4px 0px 2px #000000;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: inset rgba(0,0,0,.75) -1px -1px 2px, inset rgba(161, 160, 160, 0.9) 1px 1px 2px, rgba(0,0,0,.8) 1px 1px 2px -1px;
   margin: 4px;
-  transition: .2s;
   border-radius: 6px;
-  z-index: 5;
   cursor: pointer;
 } 
 
-.backspace_key {
-  width: 120px;
+[data-code='Backspace'] {
+  width: 140px;
 }
 
-.tab_key,
-.delete_key {
-  width: 90px;
+[data-code='Tab'],
+[data-code='Delete'] {
+  width: 100px;
 }
 
-.slash_key {
-  width: 90px;
+[data-code='CapsLock'] {
+  width: 140px;
 }
 
-.capslock_key {
-  width: 128px;
+[data-code='Enter'] {
+  width: 140px;
 }
 
-.enter_key {
-  width: 120px;
+[data-code='ShiftLeft'],
+[data-code='ShiftRight']{
+  width: 140px;
 }
 
-.shift_key {
-  width: 124px;
+[data-code="ControlRight"],
+[data-code="ControlLeft"],
+[data-code="AltRight"],
+[data-code="AltLeft"],
+[data-code="Win"]{
+  width: 80px;
 }
 
-.space_key {
-  max-width: 362px;
+[data-code='Space']{
+  max-width: 436px;
   width: 100%;
 }
+
+.keys:active {
+  animation: active 5s;
+}
+
 .keys.active {
   background-color: #333;
   color: #fff;
+}
+[data-fn="true"] {
+  background: rgb(78, 78, 78) radial-gradient(circle at 0 0, rgba(136, 134, 134, 0.65), rgba(167, 167, 167, 0.35));
+  box-shadow: inset rgba(0,0,0,.75) -1px -1px 2px, inset rgba(161, 160, 160, 0.9) 1px 1px 2px, rgba(0,0,0,.8) 1px 1px 2px -1px;
+}
+
+@keyframes active {
+  0%{
+    transform: translateY(2px);
+    background: #685ed6;
+    border: 1px solid #685ed6;
+  
+    transform: scale(0.9);
+  } 
+ 
+  100%{
+    transform: scale(0.95);
+    background: #685ed6;
+    border: 1px solid #685ed6;
+  }
+  
 }

@@ -1,19 +1,14 @@
-const keyboardEng = 
-['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
- 'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Delete',
- 'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter',
- 'Shift','\\', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '.', ',', '/','▲', 'Shift',
- 'Ctrl','Fn', 'Win', 'Alt', 'space', 'Alt', 'Ctrl',`&#x25C4;`,`&#x25BC;`, `&#x25BA;`, '']
- const keyboardRu = 
-['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
- 'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Delete',
- 'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter',
- 'Shift','\\', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '.', ',', '/','▲', 'Shift',
- 'Ctrl','Fn', 'Win', 'Alt', ' ', 'Alt', 'Ctrl',`&#x25C4;`,`&#x25BC;`, `&#x25BA;`, '']
-// document.onkeydown = function(e){
-//   keyboard.push(window.event.key)
-//   console.log(keyboard)
-// }
+
+import ru from './js/ru.js';
+import en from './js/en.js';
+
+
+let keyboard = []
+
+document.onkeydown = function(e){
+  keyboard.push(window.event.code)
+  console.log(keyboard)
+}
 
 const body = document.querySelector('body')
 function createStructure(){
@@ -28,6 +23,8 @@ function createStructure(){
   textarea.name = 'story'
   textarea.rows = '5'
   textarea.cols = '33'
+  textarea.value = ''
+  textarea.placeholder = 'Start...'
   textarea.className = 'board'
   textarea.resize = 'none'
   wrapper.append(textarea)
@@ -35,22 +32,14 @@ function createStructure(){
   keyboard.id='keyboard'
   wrapper.append(keyboard)
   for(let i=0; i<=4; i++){
-    const row = document.createElement('div')
-    row.className = 'row'
-    keyboard.append(row)
-  }
-  for(let i=0; i<=4; i++){
+    let count = 0
     const row = document.createElement('div')
     row.className = 'row';
     keyboard.append(row)
-    if(i==0||i==3){
+    if(i!=4){
       count = 14
-    }else if(i==1){
-      count=15
-    }else if(i==2){
-      count=13
     }else{
-      count=11
+      count=9
     }
 for(let j=1; j<=count; j++){
   const key = document.createElement('div')
@@ -63,15 +52,19 @@ for(let j=1; j<=count; j++){
 }
 
 function changeLang(){
+  
   const key = document.querySelectorAll('.keys')
   for(let i=0; i<key.length; i++){
-    if(keyboardEng[i].length>1){
-      let clas = keyboardEng[i].toLowerCase().concat('_key') 
-      key[i].classList.add(clas)
-    }
-    key[i].innerHTML = keyboardEng[i]
-    key[i].dataset.char = keyboardEng[i]
+    key[i].innerHTML = en[i].small
+    key[i].dataset.code = en[i].code
   }
 }
+window.addEventListener('DOMContentLoaded',createStructure )
+document.addEventListener('keydown', write);
 
-createStructure()
+
+function write(e){
+const textarea = document.querySelector('textarea')
+console.log(textarea)
+ textarea.value += e.key
+}
