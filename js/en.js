@@ -143,6 +143,7 @@ export default [
     small: 'CapsLock',
     shift: null,
     code: 'CapsLock',
+    run: false,
   },
   {
     small: 'a',
@@ -213,6 +214,8 @@ export default [
     small: 'Shift',
     shift: null,
     code: 'ShiftLeft',
+    run: false,
+
   },
   {
     small: '<',
@@ -278,6 +281,7 @@ export default [
     small: 'Shift',
     shift: null,
     code: 'ShiftRight',
+    run: false,
   },
   {
     small: 'Ctrl',

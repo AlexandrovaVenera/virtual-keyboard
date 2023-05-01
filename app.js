@@ -1,7 +1,9 @@
 
 import ru from './js/ru.js';
 import en from './js/en.js';
-
+import inputWithMouse from './js/inputWithMouse.js';
+import shift from './js/shift.js';
+import capslock from './js/capslock.js'
 
 const body = document.querySelector('body')
 function createStructure(){
@@ -37,7 +39,6 @@ function createStructure(){
 for(let j=1; j<=count; j++){
   const key = document.createElement('div')
   key.className = 'keys';
-
   row.append(key)
 }
   }
@@ -50,12 +51,22 @@ function changeLang(){
   for(let i=0; i<key.length; i++){
     key[i].innerHTML = en[i].small
     key[i].dataset.code = en[i].code
+    if(key[i].innerHTML.length==1){
+      key[i].classList.add('letter')
+    }
   }
 }
 window.addEventListener('DOMContentLoaded',()=>{
 createStructure()
 write()
-
+inputWithMouse()
+capslock();
+// setState();
+// inputTextMouse();
+// inputTextKeyboard();
+ shift();
+// keyLight();
+// clearLocalStorage();
 
 })
 
@@ -64,20 +75,15 @@ write()
 
 
 function write(event){
-  const keys = document.querySelectorAll('.keys')
-keys.forEach(key=>key.addEventListener('click', write));
-console.log(event.target)
+//   const keys = document.querySelectorAll('.keys')
+// keys.forEach(key=>key.addEventListener('click', write));
+// console.log(event.target)
 
-const textarea = document.querySelector('textarea')
-event.target.classList.add('active')
-console.log('test')
+// const textarea = document.querySelector('textarea')
+// event.target.classList.add('active')
+// console.log('test')
 
- textarea.value += event.target.innerHTML
+//  textarea.value += event.target.innerHTML
 }
 
 
-const capslock = document.querySelector('[data-code="CapsLock"]');
-//capslock.addEventListener('click',clickCapslock)
-function clickCapslock(e){
-
-}

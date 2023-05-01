@@ -3,6 +3,7 @@ export default [
     small: 'CapsLock',
     shift: null,
     code: 'CapsLock',
+    run: false,
   },
   {
     small: 'ё',
