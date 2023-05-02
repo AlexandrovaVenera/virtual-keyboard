@@ -3,7 +3,9 @@ import ru from './js/ru.js';
 import en from './js/en.js';
 import inputWithMouse from './js/inputWithMouse.js';
 import shift from './js/shift.js';
-import capslock from './js/capslock.js'
+import {capslockWithMouse,capslockWithKeyboard} from './js/capslock.js'
+import {animationWithMouse,animationWithKeyboard} from './js/animation.js';
+import inputWithKeyboard from './js/inputWithKeyboard.js';
 
 const body = document.querySelector('body')
 function createStructure(){
@@ -59,9 +61,12 @@ function changeLang(){
 window.addEventListener('DOMContentLoaded',()=>{
 createStructure()
 inputWithMouse()
-capslock();
 shift();
-
+animationWithMouse();
+inputWithKeyboard();
+animationWithKeyboard();
+capslockWithMouse();
+capslockWithKeyboard();
 })
 
 

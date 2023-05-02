@@ -193,8 +193,12 @@ border-radius: 10px;
 }
 
 .active{
-  animation: active 0.5s;
+  animation: active 0.15s;
 
+}
+.active-on{
+  background: #685ed6;
+  border: 1px solid #685ed6;
 }
 @keyframes active {
   0%{
