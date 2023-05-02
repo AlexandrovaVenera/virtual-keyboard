@@ -58,32 +58,12 @@ function changeLang(){
 }
 window.addEventListener('DOMContentLoaded',()=>{
 createStructure()
-write()
 inputWithMouse()
 capslock();
-// setState();
-// inputTextMouse();
-// inputTextKeyboard();
- shift();
-// keyLight();
-// clearLocalStorage();
+shift();
 
 })
 
 
-
-
-
-function write(event){
-//   const keys = document.querySelectorAll('.keys')
-// keys.forEach(key=>key.addEventListener('click', write));
-// console.log(event.target)
-
-// const textarea = document.querySelector('textarea')
-// event.target.classList.add('active')
-// console.log('test')
-
-//  textarea.value += event.target.innerHTML
-}
 
 
